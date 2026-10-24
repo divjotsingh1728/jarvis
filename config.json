@@ -1,0 +1,4 @@
+{
+  "llm_model": "llama3.2:3b",
+  "voice": "en-US-GuyNeural"
+}

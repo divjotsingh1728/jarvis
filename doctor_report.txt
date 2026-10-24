@@ -1,0 +1,118 @@
+
+====================================================================
+  1. SYSTEM
+====================================================================
+  Python     : 3.14.6  (64bit)
+  Platform   : Windows 11
+  Folder     : C:\Users\divjo\OneDrive\Desktop\jarvis.ai
+  Admin      : False
+
+====================================================================
+  2. PACKAGES
+====================================================================
+  [ OK ]  numpy                        2.5.3        (required)
+  [ OK ]  sounddevice                  0.5.6        (required)
+  [ OK ]  soundfile                    0.14.0       (required)
+  [ OK ]  speech_recognition           3.17.0       (required)
+  [ OK ]  flask                        3.1.3        (required)
+  [ OK ]  openai                       3.24.0       (required)
+  [FAIL]  pygame                       optional     -> No module named 'pygame'
+  [FAIL]  edge_tts                     optional     -> No module named 'edge_tts'
+  [ OK ]  pyautogui                    0.9.54       (optional)
+  [ OK ]  psutil                       7.2.2        (optional)
+  [FAIL]  pycaw                        optional     -> No module named 'pycaw'
+  [ OK ]  screen_brightness_control    0.27.2       (optional)
+  [ OK ]  vosk                                      (optional)
+
+====================================================================
+  3. MICROPHONE
+====================================================================
+  #0   Microsoft Sound Mapper - Input                         44100 Hz
+  #1   Microphone Array (AMD Audio Dev                        44100 Hz  <- default
+  #4   Primary Sound Capture Driver                           44100 Hz
+  #5   Microphone Array (AMD Audio Device)                    44100 Hz
+  #9   Microphone Array (AMD Audio Device)                    48000 Hz
+  #10  Stereo Mix (Realtek HD Audio Stereo input)             48000 Hz
+  #13  PC Speaker (Realtek HD Audio 2nd output with HAP)      44100 Hz
+  #16  PC Speaker (Realtek HD Audio output with HAP)          44100 Hz
+  #17  Microphone (Realtek HD Audio Mic input)                44100 Hz
+  #18  Microphone Array (AMDAfdInstall Wave Microphone - 0)   48000 Hz
+
+  Config: mic_device=None  mic_name_contains=''  mic_gain=1.0
+  [ OK ] Opened device #1 @ 16000 Hz (resampled to 16000)
+
+  Calibrating: please stay SILENT for 2 seconds...
+  Noise floor        : 5.0
+  Speech threshold   : 45
+
+  Now SPEAK normally for 4 seconds (say: 'jarvis youtube kholo') ...
+  Your speaking level: 5795.3   (threshold 45)
+  [ OK ] Level is healthy.
+
+====================================================================
+  4. SPEECH TO TEXT
+====================================================================
+  [ OK ] Groq key found, Whisper models: whisper-large-v3-turbo, whisper-large-v3
+
+  Sending 4.5s of what you just said...
+  [ OK ] Heard (0.8s):  "Jarvis. YouTube kholo."
+
+====================================================================
+  5. TEXT TO SPEECH
+====================================================================
+  voice_hi = hi-IN-MadhurNeural
+  voice_en = en-IN-PrabhatNeural
+  [WARN] edge-tts or pygame missing - only the old Windows voice works.
+         Fix:  pip install edge-tts pygame
+  Playing the Windows SAPI voice now...
+
+====================================================================
+  6. AI BRAIN (Groq)
+====================================================================
+  [ OK ] 11 models available (0.5s)
+  Chat models you can use:
+        allam-2-7b                                    
+        openai/gpt-oss-120b                           <= in use
+        openai/gpt-oss-20b                            <= in use
+        openai/gpt-oss-safeguard-20b                  
+        qwen/qwen3.8-27b                              
+  Whisper models: whisper-large-v3, whisper-large-v3-turbo
+
+  Sending a live chat request...
+  [ OK ] 0.7s -> ''
+
+====================================================================
+  7. WINDOWS ACTIONS
+====================================================================
+  [ OK ] volume                 -> वॉल्यूम पढ़ नहीं सका। pycaw इंस्टॉल करें।
+  [ OK ] brightness             -> ब्राइटनेस 50 प्रतिशत कर दी।
+  [ OK ] screenshot             -> स्क्रीनशॉट ले लिया, Pictures फोल्डर में है।
+  [ OK ] system_info            -> It is Saturday, 10 October 2026, 10:12 AM. CPU usage 30.4 percent. RAM
+  [ OK ] weather                -> किस शहर का मौसम बताऊँ, सर?
+
+  [ OK ] app index          -> 145 apps
+  [ OK ] contacts           -> papa
+
+====================================================================
+  SUMMARY / NEXT STEPS
+====================================================================
+  If everything above is [ OK ], start JARVIS with:
+
+        python jarvis.py
+
+  Then open  http://127.0.0.1:5000  and use the TYPE BOX first.
+
+  Quick decision table
+  --------------------
+  Typed command works, spoken does not   -> microphone / STT  (sections 3-4)
+  JARVIS understands but stays silent    -> TTS              (section 5)
+  JARVIS says "brain error"              -> API key / model  (section 6)
+  JARVIS does the wrong action           -> see README_FIXES.md, section 4
+
+  Useful config.json knobs
+  ------------------------
+  "mic_gain": 2.5          it cannot hear you
+  "always_listen": true    wake word is not triggering
+  "reply_lang": "en"       force English replies ("hi" forces Hindi)
+  "stt_lang": "en"         if Hinglish is being mis-transcribed
+  "cues": true             beep when it starts listening
